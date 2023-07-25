@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %} Customize {% endblock %} {% block
+    content %}
+<br />
+<h2> Customize </h2>
+<br /> 
+<h5>Add new Category</h5>
+<form method="POST">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control col-sm-2" id="category" name="category" />
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+    </div>
+</form>
+
+<br />
+
+<h5> Current Categories</h5>
+
+<table class="table table-hover">
+    {% for category in user.categories %}
+    <tr>
+        <td> {{category.name}} </td>
+        <td><a href="{{ url_for('views.delete_category', id = category.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+{% endblock %}

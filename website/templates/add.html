@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %} Add {% endblock %} {% block content
+%}
+<br />
+<h2>Add Expenses</h2>
+<br />
+<form method="POST">
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input type="date" class="form-control col-sm-2" id="date" name="date" />
+  </div>
+  <div class="mb-3">
+    <label for="amount" class="form-label">Amount</label>
+    <input
+      type="number"
+      class="form-control col-sm-2"
+      id="amount"
+      name="amount"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="date" class="form-label">Category</label>
+    <br />
+    <select
+      class="form-select form-select-lg mb-3"
+      aria-label=".form-select-lg example"
+      name=category
+    >
+    {% for category in user.categories %}
+      <option value={{category.name}}>{{category.name}}</option>
+    {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+    />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endblock %}
